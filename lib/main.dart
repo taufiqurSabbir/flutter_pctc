@@ -19,145 +19,98 @@ class myApp extends StatelessWidget {
   }
 }
 
-
 class homeScreen extends StatelessWidget {
-  const homeScreen({Key? key}) : super(key: key);
+   TextEditingController _emailTextEditingcontroller = TextEditingController();
+   TextEditingController _passwordcontroller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Button Pctc'),
-      ),
-      floatingActionButton:  FloatingActionButton(onPressed: (){}, child: Icon(Icons.add),),
-      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+        appBar: AppBar(
+          title: Text('bobo'),
+          centerTitle: true,
+
+          leading: IconButton(onPressed: (){},icon: Icon(Icons.home),),
+
+          actions: [
+            IconButton(onPressed: (){},icon: Icon(Icons.notifications)),
+          ],
+        ),
       body: SingleChildScrollView(
         child: Center(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.deepPurple,
-                    minimumSize: Size(150, 50),
-                    elevation: 5,
-                    padding: EdgeInsets.symmetric(vertical: 20,horizontal: 20),
-                    shadowColor: Colors.red,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(color: Colors.redAccent),
-                    )
-                  ),
-                  onPressed: (){
-                    print('hello bobo');
-                  }, child: Text('Elevated Button')),
-              
-              TextButton(
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.redAccent,
-                  padding: EdgeInsets.all(15),
-
-                ),
-                  onPressed: (){},
-                  child: Text('text Button',style: TextStyle(color: Colors.white),)
-              ),
-
-              OutlinedButton(
-                style: OutlinedButton.styleFrom(
-                  side: BorderSide(color: Colors.green)
-                ),
-                  onPressed: (){},
-                  child: Text('Outline Button')),
-
-              IconButton(
-                style: IconButton.styleFrom(
-                  side: BorderSide(color: Colors.red),
-                  padding: EdgeInsets.all(20)
-                ),
-                  onPressed: (){},
-                  icon: Icon(Icons.add)),
-
-              GestureDetector(
-                onDoubleTap: (){
-                  print('duble clicked');
-                },
-                  onLongPress: (){
-                    print('long clicked');
-                  },
-                onTap: (){
-                  print('photo clicked');
-                },
-                 child: Image.asset('asset/images/Thumbnail.png',width: 250,
-                  )
-              ),
-
-              InkWell(
-                splashColor: Colors.red,
-                  onDoubleTap: (){
-                    print('duble clicked');
-                  },
-                  onLongPress: (){
-                    print('long clicked');
-                  },
-                  onTap: (){
-                    print('photo clicked');
-                  },
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('inkwell button'),
-                  )
-              ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(18.0),
                 child: TextField(
-                  keyboardType: TextInputType.emailAddress,
+                  controller: _emailTextEditingcontroller,
+                  keyboardType: TextInputType.number,
                   decoration: InputDecoration(
-                    hintText: 'Enter Your Phone',
+                    label: Text('Phone Number'),
                     border: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.red)
+                    borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.red),
+
+
                     ),
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.green)
-                    )
                   ),
                 ),
               ),
-
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(18.0),
                 child: TextField(
                   obscureText: true,
-                  decoration:(InputDecoration(
-                    hintText: 'password',
+                  controller: _passwordcontroller,
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                    label: Text('Password'),
                     border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.red),
                     ),
                     focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide(color: Colors.deepPurple,)
+                    ),
+
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
                       borderSide: BorderSide(color: Colors.red)
                     )
-                  )),
+                  ),
                 ),
               ),
 
 
-              Card(
-                elevation: 5,
-               shadowColor: Colors.deepPurple,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5)
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text('Bobo card okay'),
-                ),
+
+              ElevatedButton(onPressed: (){
+                print(_emailTextEditingcontroller.text);
+                print(_passwordcontroller.text);
+                _emailTextEditingcontroller.clear();
+                _passwordcontroller.clear();
+              }, child: Text('show Data')),
+
+              ListTile(
+                onTap: (){
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text('list click'))
+                  );
+                },
+                title: Text('hello boo'),
+                subtitle: Text('Manager'),
+                leading: Icon(Icons.add),
+                tileColor: Colors.grey[300],
+                trailing: Icon(Icons.account_balance),
+                contentPadding: EdgeInsets.all(8),
               )
             ],
-            
+
           ),
         ),
       ),
     );
   }
 }
+
+
 
