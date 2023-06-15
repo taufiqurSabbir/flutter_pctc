@@ -37,22 +37,51 @@ class homeScreen extends StatelessWidget {
         title: Text('Hello'),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: name.length,
-        itemBuilder:(context,index){
-          return Column(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Stack(
             children: [
-              ListTile(
-                title: Text(name.values.elementAt(index).toString()),
-                subtitle: Text(name.keys.elementAt(index).toString()),
-
+              Container(
+                width: 250,
+                height: 250,
+                color: Colors.deepPurple,
+              ),
+              Container(
+                width: 230,
+                height: 230,
+                color: Colors.red,
+              ),
+              Container(
+                width: 200,
+                height: 200,
+                color: Colors.yellowAccent,
               ),
 
-            ],
-          );
-        },
+              Container(
+                width: 180,
+                height: 180,
+                color: Colors.green,
+              ),
 
-      ),
+              Positioned(
+
+                bottom: 50,
+                left: 30,
+                right: 50,
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  color: Colors.blueAccent,
+                  alignment: Alignment.center,
+
+                  child: Text('hello'),
+                ),
+              ),
+            ],
+          )
+        ],
+      )
     );
   }
 }
