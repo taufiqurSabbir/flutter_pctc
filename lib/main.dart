@@ -21,13 +21,6 @@ class myApp extends StatelessWidget {
 
 class homeScreen extends StatelessWidget {
 
-  List<String> student = [
-    'oboob',
-    'jojo',
-    'mentu',
-    'contu',
-    'dfdf'
-  ];
 
   Map<int,String>name={
     1:'php',
@@ -50,10 +43,11 @@ class homeScreen extends StatelessWidget {
           return Column(
             children: [
               ListTile(
-                title: Text(student[index]),
-                tileColor: Colors.deepPurple,
+                title: Text(name.values.elementAt(index).toString()),
+                subtitle: Text(name.keys.elementAt(index).toString()),
+
               ),
-             Padding(padding: EdgeInsets.all(10))
+
             ],
           );
         },
