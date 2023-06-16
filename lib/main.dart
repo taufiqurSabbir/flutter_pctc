@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pctc_2/counter_screen.dart';
+import 'package:pctc_2/home.dart';
 
 
 void main() {
@@ -15,7 +15,7 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'button',
-      home: counter_screen(),
+      home: HomeScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
