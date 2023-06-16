@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pctc_2/counter_screen.dart';
 
 
 void main() {
@@ -14,77 +15,92 @@ class myApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'button',
-      home: homeScreen(),
+      home: counter_screen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
 
+
 class homeScreen extends StatelessWidget {
+  String welcomemassage = 'hi';
 
-
-  Map<int,String>name={
-    1:'php',
-    2:'python',
-    3:'go',
-    4:'dart',
-    5:'javascript'
-  };
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Hello'),
+        title: Text('hello'),
         centerTitle: true,
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Stack(
-            children: [
-              Container(
-                width: 250,
-                height: 250,
-                color: Colors.deepPurple,
-              ),
-              Container(
-                width: 230,
-                height: 230,
-                color: Colors.red,
-              ),
-              Container(
-                width: 200,
-                height: 200,
-                color: Colors.yellowAccent,
-              ),
-
-              Container(
-                width: 180,
-                height: 180,
-                color: Colors.green,
-              ),
-
-              Positioned(
-
-                bottom: 50,
-                left: 30,
-                right: 50,
-                child: Container(
-                  width: 150,
-                  height: 150,
-                  color: Colors.blueAccent,
-                  alignment: Alignment.center,
-
-                  child: Text('hello'),
-                ),
-              ),
-            ],
-          )
-        ],
-      )
-    );
+      body: Center(
+            child: Text(welcomemassage,
+            style: TextStyle(
+              fontSize: 30
+            ),
+            ),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: (){
+          welcomemassage ='hello';
+        },
+       label: Text('Change text'),
+    ),);
   }
 }
 
+
+///intro /widget
+
+
+class withchange extends StatefulWidget {
+
+  @override
+  State<StatefulWidget> createState() {
+    print('step-1');
+
+        return _withchange();
+  }
+}
+
+
+///state hold part
+
+class _withchange extends State <withchange> {
+  String welcomemassage = 'hi';
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print('step-2');
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    print('step-3');
+   return Scaffold(
+      appBar: AppBar(
+        title: Text('stateless'),
+        centerTitle: true,
+      ),
+     body: Center(
+       child: Text(welcomemassage,
+         style: TextStyle(
+             fontSize: 30
+         ),
+       ),
+     ),
+     floatingActionButton: FloatingActionButton.extended(
+       onPressed: (){
+         welcomemassage = welcomemassage =='hi'?'hello' : 'hi';
+         setState(() {});
+       },
+       label: Text('Change text'),
+     ),
+   );
+  }
+
+}
 
 
