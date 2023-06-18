@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:pctc_2/home.dart';
 import 'package:pctc_2/products.dart';
 
 class User extends StatefulWidget {
@@ -26,6 +27,11 @@ class _UserState extends State<User> {
               ElevatedButton(onPressed: (){
                 Navigator.push(context, MaterialPageRoute(builder: (context)=>Products() ));
               }, child: Text('Products')),
+
+              ElevatedButton(onPressed: (){
+             Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=>Products()));
+             //push replacement for replace previous page
+              }, child: Text('Products list & remove screen')),
             ],
           )
       ),
